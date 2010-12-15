@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TiVoRemote" default="" basedir=".">
+	
+	<property file="settings.properties"/>
+	
+	<!-- path to the flex task libraries. -->
+	<path id="flextasks.classpath">
+		<fileset dir="${FLEX_HOME}/ant/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>  
+	
+	<typedef resource="flexTasks.tasks" classpathref="flextasks.classpath" />
+	
+	<target name="main" depends="android,blackberry" />
+	
+	<target name="android" depends="prepPackage, package.android, install.android" />
+	<target name="blackberry" depends="prepPackage, package.blackberry, install.blackberry" />
+	
+	<target name="clean">
+		<echo message="Cleaning Build Space"/>
+		<delete dir="${build.dir}"/>
+	</target>
+	
+	<target name="prepPackage" depends="compile,handleDevices" />
+	
+	<target name="compile" depends="clean"> 
+		<echo message="Compiling swf"/>
+		<mxmlc file="${projectFile}" output="${swfFile}"> 
+	        <load-config filename="${FLEX_HOME}/frameworks/airmobile-config.xml"/> 
+	        <source-path path-element="${FLEX_HOME}/frameworks"/>
+			<static-link-runtime-shared-libraries />
+			
+			<compiler.library-path dir="${FLEX_HOME}/frameworks" append="true">
+                <include name="libs/*" />
+            </compiler.library-path>
+		</mxmlc>
+    </target>
+	
+	
+	<target name="collect.android">
+		<echo message="Creating Device Folder for Android"/>
+		<mkdir dir="${build.dir}/android"/>
+		<echo message="Copying SWF for Android"/>
+		<copy file="${swfFile}" todir="${build.dir}/android"  />
+		<echo message="Copying Application Description File for Android"/>
+		<copy file="${dev.dir}/${app.name}-app.xml" todir="${build.dir}/android" preservelastmodified="true" />
+		<echo message="Modifying Application Description File"/>
+		<replace file="${build.dir}/android/${app.name}-app.xml">
+			<replacefilter token="${contentText}" value="${app.name}.swf" />
+		</replace>
+	</target>
+	
+	<target name="collect.blackberry">
+		<echo message="Creating Device Folder for BlackBerry"/>
+		<mkdir dir="${build.dir}/blackberry"/>
+		<echo message="Copying SWF for BlackBerry"/>
+		<copy file="${swfFile}" todir="${build.dir}/blackberry"  />
+		<echo message="Copying Application Description File for BlackBerry"/>
+		<copy file="${dev.dir}/${app.name}-app.xml" todir="${build.dir}/blackberry" preservelastmodified="true" />
+		<echo message="Modifying Application Description File"/>
+		<replace file="${build.dir}/blackberry/${app.name}-app.xml">
+			<replacefilter token="${contentText}" value="${app.name}.swf" />
+		</replace>
+	</target>
+	
+	<target name="handleDevices" depends="collect.android, collect.blackberry"/>
+		
+		
+	
+	
+	<target name="package.android">
+		<echo message="Packaging for Android"/>
+		<exec executable="${ADT}" dir="${build.dir}/android">
+			<arg value="-package"/>
+			<arg line="-target apk"/>
+			<arg line="-storetype pkcs12"/>
+			<arg line="-keystore ${cert}" />
+			<arg line="-storepass ${cert.password}" />
+			<arg value="${app.name}"/>
+			<arg value="${app.name}-app.xml"/>
+			<arg value="${app.name}.swf"/>
+		</exec>
+	</target>
+	
+	<target name="package.blackberry">
+		<echo message="Packaging for BlackBerry"/>
+		<exec executable="${BBPackager}" dir="${build.dir}/blackberry">
+			<arg value="-package"/>
+			<arg value="${app.name}.bar"/>
+			<arg value="${app.name}-app.xml"/>
+			<arg value="${app.name}.swf"/>
+		</exec>
+	</target>
+	
+	
+	<target name="install.android">
+		<echo message="Installing onto attached Android Device"/>
+		<exec executable="${ADB}">
+			<arg value="install"/>
+			<arg value="-r"/>
+			<arg value="${build.dir}/android/${app.name}.apk"/>
+		</exec>	
+	</target>
+	
+	<target name="install.blackberry">
+		<echo message="Installing onto Blackberry VM"/>
+		<exec executable="${BBPackager}" dir="${build.dir}/blackberry">
+			<arg value="-package"/>
+			<arg value="${app.name}.bar"/>
+			<arg value="-installApp"/>
+			<arg value="-launchApp"/>
+			<arg value="${app.name}-app.xml"/>
+			<arg value="${app.name}.swf"/>
+			<arg value="-device"/>
+			<arg value="${bb.ip}"/>
+			<arg value="-password"/>
+			<arg value="${bb.password}"/>
+		</exec>
+	</target>
+	
+	
+	
+</project>	
