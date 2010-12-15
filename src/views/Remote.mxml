@@ -151,12 +151,19 @@
 		<s:Button id="tivo" right="10" top="10" height="60" label="Tivo" click="tivo_clickHandler()"/>
 		
 	
-	<components:ArrowControls id="arrows" top="10" down="down_clickHandler()" horizontalCenter="0"
-							  select="select_clickHandler()" up="up_clickHandler()"/>
+	<components:ArrowControls id="arrows" top="10" 
+							  up="up_clickHandler()"
+							  left="left_clickHandler()"	
+							  select="select_clickHandler()" 
+							  right="right_clickHandler()"
+							  down="down_clickHandler()" 
+							  
+							  />
 	
 	
 	<components:ChannelControls id="channelControls" right="10" bottom="10"
-								down="down_clickHandler()" up="up_clickHandler()"/>
+								down="channelDown_clickHandler()" 
+								up="channelUp_clickHandler()"/>
 	
 	
 	<components:PlayControls id="playControls" top="270" forward="actionForward_clickHandler()"
