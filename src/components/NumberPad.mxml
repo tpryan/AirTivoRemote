@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 width="196" height="266">
+	
+	<fx:Metadata> 
+		[Event(name="num1Clicked", type="flash.events.Event")]
+		[Event(name="num2Clicked", type="flash.events.Event")]
+		[Event(name="num3Clicked", type="flash.events.Event")]
+		[Event(name="num4Clicked", type="flash.events.Event")]
+		[Event(name="num5Clicked", type="flash.events.Event")]
+		[Event(name="num6Clicked", type="flash.events.Event")]
+		[Event(name="num7Clicked", type="flash.events.Event")]
+		[Event(name="num8Clicked", type="flash.events.Event")]
+		[Event(name="num9Clicked", type="flash.events.Event")]
+		[Event(name="num0Clicked", type="flash.events.Event")]
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			protected function pad1_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num1Clicked"));
+			}
+			
+			protected function pad2_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num2Clicked"));
+			}
+			
+			protected function pad3_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num3Clicked"));
+			}
+			
+			protected function pad4_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num4Clicked"));
+			}
+			
+			protected function pad5_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num5Clicked"));
+			}
+			
+			protected function pad6_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num6Clicked"));
+			}
+			
+			protected function pad7_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num7Clicked"));
+			}
+			
+			protected function pad8_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num8Clicked"));
+			}
+			
+			protected function pad9_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num9Clicked"));
+			}
+			
+			protected function pad0_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("num0Clicked"));
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Button id="pad1" height="60" width="60" left="5" top="5" label="1" click="pad1_clickHandler(event)"/>
+	<s:Button id="pad2" height="60" width="60" left="68" top="5" label="2" click="pad2_clickHandler(event)"/>
+	<s:Button id="pad3" height="60" width="60" left="131" top="5" label="3" click="pad3_clickHandler(event)"/>
+	<s:Button id="pad4" height="60" width="60" left="5" top="69" label="4" click="pad4_clickHandler(event)"/>
+	<s:Button id="pad5" height="60" width="60" left="68" top="69" label="5" click="pad5_clickHandler(event)"/>
+	<s:Button id="pad6" height="60" width="60" left="131" top="69" label="6" click="pad6_clickHandler(event)"/>
+	<s:Button id="pad7" height="60" width="60" left="5" top="133" label="7" click="pad7_clickHandler(event)"/>
+	<s:Button id="pad8" height="60" width="60" left="68" top="133" label="8" click="pad8_clickHandler(event)"/>
+	<s:Button id="pad9" height="60" width="60" left="131" top="133" label="9" click="pad9_clickHandler(event)"/>
+	<s:Button id="pad0" height="60" width="60" left="68" top="197" label="0" click="pad0_clickHandler(event)"/>
+	
+	
+</s:Group>
