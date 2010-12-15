@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Add Tivo" viewActivate="init(event)">
+
+	<fx:Script>
+		<![CDATA[
+			import com.terrenceryan.tivoremote.Tivo;
+			import com.terrenceryan.tivoremote.TivoService;
+			
+			import mx.events.FlexEvent;
+			public var tivoService:TivoService = new TivoService();
+			protected var popData:Object = new Object();
+			
+			private var viewTitle:String = "Add Tivo";
+			
+			override public function createReturnObject():Object {
+				var returnedObject:Object = popData;
+				return returnedObject;
+			}
+
+			protected function saveButton_clickHandler(event:MouseEvent):void
+			{
+			
+				var tivo:Tivo = data as Tivo;
+				
+				if (tivo.id == 0){
+					tivoService.add(tivo);
+					popData.msg = "Record Added";
+					navigator.popView();
+				}
+				else{
+					tivoService.update(tivo);
+					popData.msg = "Record Updated";
+					navigator.popView();
+				}
+			}
+
+
+
+			protected function deleteButton_clickHandler(event:MouseEvent):void
+			{
+				var tivo:Tivo = data as Tivo;
+				tivoService.destroy(tivo);
+				popData.msg = "Record Deleted";
+				navigator.popView();
+				
+			}
+
+
+
+
+			protected function init(event:FlexEvent):void
+			{
+				var tivo:Tivo = data as Tivo;
+				
+				if (tivo.id == 0){
+					this.title = "Add Tivo";
+				}
+				else{
+					this.title = "Update Tivo";
+				}
+			}
+
+
+			protected function cancelButton_clickHandler(event:MouseEvent):void
+			{
+				navigator.popView();
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:actionContent>
+		<s:Button id="cancelButton" icon="@Embed(source='../assets/cancel48x48.png')" right="10" top="10" label="Cancel" click="cancelButton_clickHandler(event)"/>
+		<s:Button id="deleteButton" icon="@Embed(source='../assets/delete48x48.png')" right="10" top="10" label="Delete" click="deleteButton_clickHandler(event)"/>
+	</s:actionContent>
+	
+	<s:Group left="10" right="10" top="40" height="404">
+		<s:Label x="10" y="10" text="Name:"/>
+		<s:TextInput id="nameText" y="41" left="10" right="10" text="@{data.name}"/>
+		<s:Label x="10" y="104" text="Hostname:"/>
+		<s:TextInput id="hostnameText" y="135" left="10" right="10" text="@{data.hostname}"/>
+		<s:Label x="10" y="198" text="Active:"/>
+		<s:CheckBox id="activeCheck" y="229" selected="@{data.active}" />
+		<s:Button id="saveButton" icon="@Embed(source='../assets/save48x48.png')" y="321" left="10" right="10" label="Save" click="saveButton_clickHandler(event)"/>
+	</s:Group>
+	
+	
+	
+	
+</s:View>

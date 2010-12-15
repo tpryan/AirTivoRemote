@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graphic version="2.0" xmlns="http://ns.adobe.com/fxg/2008"
+	viewWidth="80" viewHeight="26"
+	scaleGridLeft="2" scaleGridTop="2" scaleGridRight="78" scaleGridBottom="24">
+	<Rect x="0" y="0" width="80" height="26">
+		<fill>
+			<SolidColor color="#464646"/>
+		</fill>
+	</Rect>
+	<Rect x="0" y="0" width="80" height="26" >
+		<fill>
+			<LinearGradient scaleX="26" rotation="90">
+				<GradientEntry color="#ffffff" ratio="0" alpha="0.25"/>
+				<GradientEntry color="#fafafa" ratio="0.22" alpha="0.25"/>
+				<GradientEntry color="#e8e8e8" ratio="1" alpha="0.05"/>
+			</LinearGradient>
+		</fill>
+        <stroke>
+            <LinearGradientStroke scaleX="26" rotation="90" weight="1">
+                <GradientEntry color="#ffffff" ratio="0" alpha="0.25"/>
+                <GradientEntry color="#ffffff" ratio="1" alpha="0.15"/>
+            </LinearGradientStroke>
+        </stroke>
+	</Rect>
+</Graphic>

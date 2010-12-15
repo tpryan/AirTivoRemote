@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Your Tivos" viewActivate="init(event)">
+
+	<fx:Script>
+		<![CDATA[
+			import com.terrenceryan.tivoremote.Tivo;
+			import com.terrenceryan.tivoremote.TivoService;
+			
+			import mx.events.FlexEvent;
+			public var tivoService:TivoService = new TivoService();
+
+			
+			protected function closeButton_clickHandler():void
+			{
+				NativeApplication.nativeApplication.exit();
+			}
+
+
+
+			protected function addButton_clickHandler(event:MouseEvent):void
+			{
+				navigator.pushView(SettingsEdit, new Tivo());
+			}
+
+
+			protected function tivoList_clickHandler(event:MouseEvent):void
+			{
+				navigator.pushView(SettingsEdit, tivoList.selectedItem);
+			}
+
+
+			protected function init(event:FlexEvent):void
+			{
+				if (returnedObject != null) {
+					messages.text = returnedObject.msg;
+				}else{
+					if (data.hasOwnProperty("msg")){
+						messages.text = data.msg;
+					}
+				}
+				
+				
+				
+				tivoList.dataProvider = tivoService.tivos;
+				
+			}
+
+
+			protected function remoteButton_clickHandler(event:MouseEvent):void
+			{
+				navigator.popToFirstView();
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:actionContent>
+		<s:Button id="remoteButton" label="Remote" click="remoteButton_clickHandler(event)"  />
+		<s:Button id="addButton" icon="@Embed(source='../assets/add48x48.png')" right="10" top="10"  click="addButton_clickHandler(event)"/>
+		<s:Button id="closeButton" icon="@Embed(source='../assets/close48x48.png')"   click="closeButton_clickHandler()"  />
+	</s:actionContent>
+	
+	<s:List id="tivoList" left="10" right="10" top="54" height="50%" labelField="name" click="tivoList_clickHandler(event)"></s:List>
+	<s:Label id="messages" left="10" right="10" top="10" height="32" fontWeight="bold"
+			 text="Your Tivos:" verticalAlign="bottom"/>
+	
+	
+	
+	
+</s:View>

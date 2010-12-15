@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="TiVo" creationComplete="init(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.terrenceryan.tivoremote.TivoRemote;
+			import com.terrenceryan.tivoremote.TivoService;
+			
+			import mx.events.FlexEvent;
+			
+			protected var tivoService:TivoService = new TivoService();
+			protected var tivoRemote:TivoRemote = null;
+			
+
+			protected function actionPause_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.pause();
+			}
+
+
+			protected function actionForward_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.forward();
+			}
+
+
+			protected function actionReverse_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.reverse();
+			}
+
+
+			protected function actionSlow_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.slow();
+			}
+
+
+			protected function channelUp_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.channelup();
+			}
+
+
+			protected function channelDown_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.channeldown();
+			}
+
+
+			protected function enter_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.enter();
+			}
+
+
+			protected function up_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.up();
+			}
+
+
+			protected function down_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.down();
+			}
+
+
+			protected function left_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.left();
+			}
+
+
+			protected function right_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.right();
+			}
+
+
+			protected function tivo_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.tivo();
+			}
+
+
+			protected function live_clickHandler(event:MouseEvent):void
+			{
+				tivoRemote.livetv();
+			}
+
+
+			protected function pad1_clickHandler(event:MouseEvent):void{
+				tivoRemote.num1();
+			}
+
+
+			protected function pad2_clickHandler(event:MouseEvent):void{
+				tivoRemote.num2();
+			}
+
+
+			protected function pad3_clickHandler(event:MouseEvent):void{
+				tivoRemote.num3();
+			}
+
+
+			protected function pad4_clickHandler(event:MouseEvent):void{
+				tivoRemote.num4();
+			}
+
+
+			protected function pad5_clickHandler(event:MouseEvent):void{
+				tivoRemote.num5();
+			}
+
+
+			protected function pad6_clickHandler(event:MouseEvent):void{
+				tivoRemote.num6();
+			}
+
+
+			protected function pad7_clickHandler(event:MouseEvent):void{
+				tivoRemote.num7();
+			}
+
+
+			protected function pad8_clickHandler(event:MouseEvent):void{
+				tivoRemote.num8();
+			}
+
+
+			protected function pad9_clickHandler(event:MouseEvent):void{
+				tivoRemote.num9();
+			}
+
+
+			protected function pad0_clickHandler(event:MouseEvent):void{
+				tivoRemote.num0();
+			}
+
+			protected function settings_clickHandler(event:MouseEvent):void
+			{
+				navigator.pushView(Settings, tivoRemote.log);
+			}
+			
+			protected function log_clickHandler(event:MouseEvent):void
+			{
+				navigator.pushView(Log, tivoRemote.log);
+			}
+			protected function closeButton_clickHandler():void
+			{
+				NativeApplication.nativeApplication.exit();
+			}
+
+
+			protected function init(event:FlexEvent):void
+			{
+				if (tivoService.active == null){
+					navigator.pushView(Settings, {msg:"Please add a device"});
+					
+				}else{
+					tivoRemote = new TivoRemote(tivoService.active.hostname);
+				}
+				
+				
+			}
+
+		]]>
+	</fx:Script>
+	
+	
+	<s:actionContent>
+		<s:Button id="settings" icon="@Embed(source='../assets/settings48x48.png')" right="10" top="10"  click="settings_clickHandler(event)"/>
+		<s:Button id="log" icon="@Embed(source='../assets/log48x48.png')" right="10" top="10" click="log_clickHandler(event)"/>
+		<s:Button id="closeButton" icon="@Embed(source='../assets/close48x48.png')"  click="closeButton_clickHandler()"  />
+	</s:actionContent>
+	
+	<s:Group id="navControls" width="303" height="258" horizontalCenter="0" verticalCenter="106">
+		<s:Button id="up" width="80" label="↑" click="up_clickHandler(event)" horizontalCenter="0"
+				  verticalCenter="-80"/>
+		<s:Button id="down" width="80" label="↓" click="down_clickHandler(event)"
+				  horizontalCenter="0" verticalCenter="80"/>
+		<s:Button id="left" width="80" label="←" click="left_clickHandler(event)"
+				  horizontalCenter="-100" verticalCenter="0"/>
+		<s:Button id="right" width="80" label="→" click="right_clickHandler(event)"
+				  horizontalCenter="100" verticalCenter="0"/>
+		<s:Button id="enter" width="109" label="Enter" click="enter_clickHandler(event)"
+				  horizontalCenter="0" verticalCenter="0"/>
+	</s:Group>
+	
+	
+	<s:Group id="playControls" width="291" height="175" horizontalCenter="0" verticalCenter="337">
+		<s:Button id="actionPause" x="106" y="10" width="80" label="||"
+				  click="actionPause_clickHandler(event)"/>
+		<s:Button id="actionForward" x="194" y="10" width="80" label="&gt;&gt;"
+				  click="actionForward_clickHandler(event)"/>
+		<s:Button id="actionReverse" x="18" y="10" width="80" label="&lt;&lt;"
+				  click="actionReverse_clickHandler(event)"/>
+		<s:Button id="actionSlow" x="106" y="91" width="80" label="|&gt;"
+				  click="actionSlow_clickHandler(event)"/>
+		
+	</s:Group>
+	
+	
+	<s:Group id="channelControls" right="10" bottom="10" width="101" height="175">
+		<s:Button id="channelUp" left="10" top="10" width="80" height="73" label="↑"
+				  click="channelUp_clickHandler(event)"/>
+		<s:Button id="channelDown" left="10" top="91" width="80" label="↓"
+				  click="channelDown_clickHandler(event)"/>
+		
+	</s:Group>
+	
+	
+	<s:Button id="tivo" left="152" top="10" label="Tivo" click="tivo_clickHandler(event)"/>
+	<s:Button id="live" left="10" top="10" label="Live TV" click="live_clickHandler(event)"/>
+	
+	<s:Group id="numberPad" x="206" y="91" width="195" height="331">
+		<s:Button id="pad1" x="1" y="10" label="1" click="pad1_clickHandler(event)"/>
+		<s:Button id="pad2" x="68" y="10" label="2" click="pad2_clickHandler(event)"/>
+		<s:Button id="pad3" x="136" y="10" label="3" click="pad3_clickHandler(event)"/>
+		<s:Button id="pad4" x="1" y="91" label="4" click="pad4_clickHandler(event)"/>
+		<s:Button id="pad5" x="68" y="91" label="5" click="pad5_clickHandler(event)"/>
+		<s:Button id="pad6" x="136" y="91" label="6" click="pad6_clickHandler(event)"/>
+		<s:Button id="pad7" x="1" y="172" label="7" click="pad7_clickHandler(event)"/>
+		<s:Button id="pad8" x="68" y="172" label="8" click="pad8_clickHandler(event)"/>
+		<s:Button id="pad9" x="136" y="172" label="9" click="pad9_clickHandler(event)"/>
+		<s:Button id="pad0" x="68" y="253" label="0" click="pad0_clickHandler(event)"/>
+	</s:Group>
+	
+	
+	
+	
+	
+</s:View>
