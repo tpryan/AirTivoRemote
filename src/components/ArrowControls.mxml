@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" width="306" height="244">
+		 xmlns:s="library://ns.adobe.com/flex/spark" >
 	
 	<fx:Metadata>
 		[Event(name="up", type="flash.events.Event")]
@@ -36,18 +36,21 @@
 		]]>
 	</fx:Script>
 	
+	<s:layout>
+		<s:TileLayout requestedColumnCount="3" verticalGap="3" horizontalGap="3"  />
+	</s:layout>
+
 	
-	<s:Button id="up" width="80" label="↑" click="up_clickHandler(event)" horizontalCenter="0"
-			  verticalCenter="-80"/>
-	<s:Button id="down" width="80" label="↓" click="down_clickHandler(event)"
-			  horizontalCenter="0" verticalCenter="80"/>
-	<s:Button id="left" width="80" label="←" click="left_clickHandler(event)"
-			  horizontalCenter="-100" verticalCenter="0"
-			  />
-	<s:Button id="right" width="80" label="→" click="right_clickHandler(event)"
-			  horizontalCenter="100" verticalCenter="0"
-			 />
-	<s:Button id="select" label="Select" click="select_clickHandler(event)"
-			  horizontalCenter="0" verticalCenter="0"
-			  />
+	<s:Button visible="false" height="60" width="60"  />
+	<s:Button id="up" width="80" label="↑" click="up_clickHandler(event)" horizontalCenter="0"/>
+	<s:Button visible="false" height="60" width="60"  />
+	
+	<s:Button id="left" width="80" label="←" click="left_clickHandler(event)" />
+	<s:Button id="select" label="Select" click="select_clickHandler(event)" fontSize="12"/>
+	<s:Button id="right" width="80" label="→" click="right_clickHandler(event)" />
+
+	<s:Button visible="false" height="60" width="60"  />
+	<s:Button id="down" width="80" label="↓" click="down_clickHandler(event)" />
+	<s:Button visible="false" height="60" width="60"  />
+	
 </s:Group>

@@ -147,41 +147,29 @@
 	
 		
 		
-		<s:Button id="live" label="Live TV" click="live_clickHandler()"
-				  left.landscape="10" top.landscape="10"
-				  left.portrait="10" top.portrait="10"/>
-		<s:Button id="tivo" label="Tivo" click="tivo_clickHandler()"
-				  left.landscape="351" top.landscape="10"
-				  right.portrait="10" top.portrait="10"/>
+		<s:Button id="live" left="10" top="10" height="60" label="Live" click="live_clickHandler()"/>
+		<s:Button id="tivo" right="10" top="10" height="60" label="Tivo" click="tivo_clickHandler()"/>
 		
 	
-	<components:ArrowControls id="arrows" down="down_clickHandler()" select="select_clickHandler()"
-							  up="up_clickHandler()"
-							  x.landscape="70" y.landscape="10" width.landscape="306"
-							  top.portrait="20" width.portrait="306" horizontalCenter.portrait="0"/>
+	<components:ArrowControls id="arrows" top="10" down="down_clickHandler()" horizontalCenter="0"
+							  select="select_clickHandler()" up="up_clickHandler()"/>
 	
 	
-	<components:ChannelControls id="channelControls" right="10" down="down_clickHandler()"
-								up="up_clickHandler()"
-								right.landscape="223" verticalCenter.landscape="-14"
-								right.portrait="10" bottom.portrait="10"/>
+	<components:ChannelControls id="channelControls" right="10" bottom="10"
+								down="down_clickHandler()" up="up_clickHandler()"/>
 	
 	
-	<components:PlayControls id="playControls" forward="actionForward_clickHandler()"
-							 pause="actionPause_clickHandler()"
-							 reverse="actionReverse_clickHandler()" slow="actionSlow_clickHandler()"
-							 left.landscape="10" bottom.landscape="10" height.landscape="86"
-							 horizontalCenter.portrait="0" verticalCenter.portrait="-16"/>
+	<components:PlayControls id="playControls" top="270" forward="actionForward_clickHandler()"
+							 horizontalCenter="0" pause="actionPause_clickHandler()"
+							 reverse="actionReverse_clickHandler()" slow="actionSlow_clickHandler()"/>
 	
 	
-	<components:NumberPad id="numberPad" num0Clicked="pad0_clickHandler()"
+	<components:NumberPad id="numberPad" left="10" bottom="10" num0Clicked="pad0_clickHandler()"
 						  num1Clicked="pad1_clickHandler()" num2Clicked="pad2_clickHandler()"
 						  num3Clicked="pad3_clickHandler()" num4Clicked="pad4_clickHandler()"
 						  num5Clicked="pad5_clickHandler()" num6Clicked="pad6_clickHandler()"
 						  num7Clicked="pad7_clickHandler()" num8Clicked="pad8_clickHandler()"
-						  num9Clicked="pad9_clickHandler()"
-						  right.landscape="10" top.landscape="10"
-						  left.portrait="10" bottom.portrait="10"/>
+						  num9Clicked="pad9_clickHandler()"/>
 	
 	
 	

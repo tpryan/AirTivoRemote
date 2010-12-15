@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" width="432" height="86">
+		 xmlns:s="library://ns.adobe.com/flex/spark">
 	
 	<fx:Metadata>
 		[Event(name="pause", type="flash.events.Event")]
@@ -35,16 +35,17 @@
 		]]>
 	</fx:Script>
 	
+	<s:layout>
+		<s:HorizontalLayout gap="3" />
+	</s:layout>
 	
-	<s:Button id="actionPause" x="175" top="5" width="80" label="||"
-			  click="actionPause_clickHandler(event)" />
-	<s:Button id="actionForward" x="343" top="5" width="80" label="&gt;&gt;"
-			  click="actionForward_clickHandler(event)" />
-	<s:Button id="actionReverse" left="5" top="5" width="80" label="&lt;&lt;"
-			  click="actionReverse_clickHandler(event)"/>
-	<s:Button id="actionSlow" x="259" top="5" width="80" label="|&gt;"
-			  click="actionSlow_clickHandler(event)" />
-	<s:Button id="actionBackup" left="91" top="5" width="80" label="&lt;|"
-			  click="actionBackup_clickHandler(event)"/>
+	<s:Button id="actionReverse" width="75" label="&lt;&lt;" click="actionReverse_clickHandler(event)"/>
+	<s:Button id="actionBackup"  width="75" label="&lt;|" click="actionBackup_clickHandler(event)"/>
+	<s:Button id="actionPause" width="75" label="||" click="actionPause_clickHandler(event)" />
+	<s:Button id="actionSlow" width="75" label="|&gt;" click="actionSlow_clickHandler(event)" />
+	<s:Button id="actionForward" width="75" label="&gt;&gt;" click="actionForward_clickHandler(event)" />
+	
+	
+	
 
 </s:Group>
