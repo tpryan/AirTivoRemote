@@ -3,34 +3,34 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" >
 	
 	<fx:Metadata>
-		[Event(name="up", type="flash.events.Event")]
-		[Event(name="down", type="flash.events.Event")]
-		[Event(name="left", type="flash.events.Event")]
-		[Event(name="right", type="flash.events.Event")]
-		[Event(name="select", type="flash.events.Event")]
+		[Event(name="upClicked", type="flash.events.Event")]
+		[Event(name="downClicked", type="flash.events.Event")]
+		[Event(name="leftClicked", type="flash.events.Event")]
+		[Event(name="rightClicked", type="flash.events.Event")]
+		[Event(name="selectClicked", type="flash.events.Event")]
 	</fx:Metadata>
 	
 	<fx:Script>
 		<![CDATA[
 			
 			protected function select_clickHandler(event:MouseEvent):void{
-				dispatchEvent(new Event("select"));
+				dispatchEvent(new Event("selectClicked"));
 			}
 			
 			protected function up_clickHandler(event:MouseEvent):void{
-				dispatchEvent(new Event("up"));
+				dispatchEvent(new Event("upClicked"));
 			}
 			
 			protected function down_clickHandler(event:MouseEvent):void{
-				dispatchEvent(new Event("down"));
+				dispatchEvent(new Event("downClicked"));
 			}
 			
 			protected function left_clickHandler(event:MouseEvent):void{
-				dispatchEvent(new Event("left"));
+				dispatchEvent(new Event("leftClicked"));
 			}
 			
 			protected function right_clickHandler(event:MouseEvent):void{
-				dispatchEvent(new Event("right"));
+				dispatchEvent(new Event("rightClicked"));
 			}
 
 		]]>

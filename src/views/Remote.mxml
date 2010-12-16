@@ -106,6 +106,14 @@
 			protected function pad0_clickHandler():void{
 				tivoRemote.num0();
 			}
+			
+			protected function enter_clickHandler():void{
+				tivoRemote.enter();
+			}
+			
+			protected function clear_clickHandler():void{
+				tivoRemote.clear();
+			}
 
 			protected function settings_clickHandler():void{
 				navigator.pushView(Settings, tivoRemote.log);
@@ -151,14 +159,12 @@
 		<s:Button id="tivo" right="10" top="10" height="60" label="Tivo" click="tivo_clickHandler()"/>
 		
 	
-	<components:ArrowControls id="arrows" top="10" 
-							  up="up_clickHandler()"
-							  left="left_clickHandler()"	
-							  select="select_clickHandler()" 
-							  right="right_clickHandler()"
-							  down="down_clickHandler()" 
-							  
-							  />
+	<components:ArrowControls id="arrows" top="10" downClicked="down_clickHandler()"
+							  selectClicked="select_clickHandler()" upClicked="up_clickHandler()"
+							  leftClicked="left_clickHandler()" rightClicked="right_clickHandler()"
+							  top.landscape="10" width.landscape="258"
+							  horizontalCenter.landscape="0"
+							  top.portrait="10" width.portrait="258" horizontalCenter.portrait="0"/>
 	
 	
 	<components:ChannelControls id="channelControls" right="10" bottom="10"
@@ -171,12 +177,13 @@
 							 reverse="actionReverse_clickHandler()" slow="actionSlow_clickHandler()"/>
 	
 	
-	<components:NumberPad id="numberPad" left="10" bottom="10" num0Clicked="pad0_clickHandler()"
-						  num1Clicked="pad1_clickHandler()" num2Clicked="pad2_clickHandler()"
-						  num3Clicked="pad3_clickHandler()" num4Clicked="pad4_clickHandler()"
-						  num5Clicked="pad5_clickHandler()" num6Clicked="pad6_clickHandler()"
-						  num7Clicked="pad7_clickHandler()" num8Clicked="pad8_clickHandler()"
-						  num9Clicked="pad9_clickHandler()"/>
+	<components:NumberPad id="numberPad" left="10" bottom="10" num0="pad0_clickHandler()"
+						  num1="pad1_clickHandler()" num2="pad2_clickHandler()"
+						  num3="pad3_clickHandler()" num4="pad4_clickHandler()"
+						  num5="pad5_clickHandler()" num6="pad6_clickHandler()"
+						  num7="pad7_clickHandler()" num8="pad8_clickHandler()"
+						  num9="pad9_clickHandler()" enter="enter_clickHandler()"
+						  clear="clear_clickHandler()"/>
 	
 	
 	

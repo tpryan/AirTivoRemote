@@ -4,16 +4,18 @@
 		 >
 	
 	<fx:Metadata> 
-		[Event(name="num1Clicked", type="flash.events.Event")]
-		[Event(name="num2Clicked", type="flash.events.Event")]
-		[Event(name="num3Clicked", type="flash.events.Event")]
-		[Event(name="num4Clicked", type="flash.events.Event")]
-		[Event(name="num5Clicked", type="flash.events.Event")]
-		[Event(name="num6Clicked", type="flash.events.Event")]
-		[Event(name="num7Clicked", type="flash.events.Event")]
-		[Event(name="num8Clicked", type="flash.events.Event")]
-		[Event(name="num9Clicked", type="flash.events.Event")]
-		[Event(name="num0Clicked", type="flash.events.Event")]
+		[Event(name="num1", type="flash.events.Event")]
+		[Event(name="num2", type="flash.events.Event")]
+		[Event(name="num3", type="flash.events.Event")]
+		[Event(name="num4", type="flash.events.Event")]
+		[Event(name="num5", type="flash.events.Event")]
+		[Event(name="num6", type="flash.events.Event")]
+		[Event(name="num7", type="flash.events.Event")]
+		[Event(name="num8", type="flash.events.Event")]
+		[Event(name="num9", type="flash.events.Event")]
+		[Event(name="num0", type="flash.events.Event")]
+		[Event(name="enter", type="flash.events.Event")]
+		[Event(name="clear", type="flash.events.Event")]
 	</fx:Metadata>
 	
 	<fx:Script>
@@ -57,6 +59,14 @@
 			protected function pad0_clickHandler(event:MouseEvent):void{
 				dispatchEvent(new Event("num0Clicked"));
 			}
+			
+			protected function clear_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("clear"));
+			}
+			
+			protected function enter_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("enter"));
+			}
 		]]>
 	</fx:Script>
 	
@@ -74,8 +84,9 @@
 	<s:Button id="pad7" height="60" width="60" label="7" click="pad7_clickHandler(event)"/>
 	<s:Button id="pad8" height="60" width="60" label="8" click="pad8_clickHandler(event)"/>
 	<s:Button id="pad9" height="60" width="60" label="9" click="pad9_clickHandler(event)"/>
-	<s:Button visible="false" height="60" width="60" label="0" click="pad0_clickHandler(event)"/>
+	<s:Button id="clear" height="60" width="60" label="C" click="clear_clickHandler(event)"/>
 	<s:Button id="pad0" height="60" width="60" label="0" click="pad0_clickHandler(event)"/>
+	<s:Button id="enter" height="60" width="60" label="E" click="enter_clickHandler(event)"/>		  
 
 	
 	
