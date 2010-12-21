@@ -2,7 +2,8 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="TiVo" creationComplete="init(event)" 
-		xmlns:components="components.*">
+		xmlns:components="components.*" >
+	
 	
 	<fx:Script>
 		<![CDATA[
@@ -15,19 +16,31 @@
 			protected var tivoRemote:TivoRemote = null;
 			
 
-			protected function actionPause_clickHandler():void{
+			protected function play_clickHandler():void{
+				tivoRemote.play();
+			}
+			
+			protected function advance_clickHandler():void{
+				tivoRemote.advance();
+			}
+			
+			protected function replay_clickHandler():void{
+				tivoRemote.replay();
+			}
+			
+			protected function pause_clickHandler():void{
 				tivoRemote.pause();
 			}
 
-			protected function actionForward_clickHandler():void{
+			protected function forward_clickHandler():void{
 				tivoRemote.forward();
 			}
 
-			protected function actionReverse_clickHandler():void{
+			protected function reverse_clickHandler():void{
 				tivoRemote.reverse();
 			}
 
-			protected function actionSlow_clickHandler():void{
+			protected function slow_clickHandler():void{
 				tivoRemote.slow();
 			}
 
@@ -139,52 +152,76 @@
 				
 			}
 
+
+			protected function thumbsControls_downHandler():void{
+				tivoRemote.thumbsdown();
+			}
+
+
+			protected function thumbsControls_upHandler():void{
+				tivoRemote.thumbsup();
+			}
+
+
+			protected function guide_clickHandler():void{
+				tivoRemote.guide();
+			}
+
+			protected function info_clickHandler():void{
+				tivoRemote.display();
+			}
+
 		]]>
 	</fx:Script>
-	<s:states>
-		<s:State name="portrait"/>
-		<s:State name="landscape"/>
-	</s:states>
 	
 	
 	<s:actionContent>
-		<s:Button id="settings" icon="@Embed(source='../assets/settings48x48.png')" right="10" top="10"  click="settings_clickHandler()"/>
-		<s:Button id="log" icon="@Embed(source='../assets/log48x48.png')" right="10" top="10" click="log_clickHandler()"/>
-		<s:Button id="closeButton" icon="@Embed(source='../assets/close48x48.png')"  click="closeButton_clickHandler()"  />
+		<s:Button id="settings" icon="@Embed(source='../assets/menu/settings48x48.png')" right="10" top="10"  click="settings_clickHandler()"/>
+		<s:Button id="log" icon="@Embed(source='../assets/menu/log48x48.png')" right="10" top="10" click="log_clickHandler()"/>
+		<s:Button id="closeButton" icon="@Embed(source='../assets/menu/close48x48.png')"  click="closeButton_clickHandler()"  />
 	</s:actionContent>
 	
 		
-		
-		<s:Button id="live" left="10" top="10" height="60" label="Live" click="live_clickHandler()"/>
-		<s:Button id="tivo" right="10" top="10" height="60" label="Tivo" click="tivo_clickHandler()"/>
-		
 	
 	<components:ArrowControls id="arrows" top="10" downClicked="down_clickHandler()"
-							  selectClicked="select_clickHandler()" upClicked="up_clickHandler()"
-							  leftClicked="left_clickHandler()" rightClicked="right_clickHandler()"
-							  top.landscape="10" width.landscape="258"
-							  horizontalCenter.landscape="0"
-							  top.portrait="10" width.portrait="258" horizontalCenter.portrait="0"/>
+							  horizontalCenter="0" leftClicked="left_clickHandler()"
+							  rightClicked="right_clickHandler()"
+							  selectClicked="select_clickHandler()" upClicked="up_clickHandler()"/>
 	
 	
-	<components:ChannelControls id="channelControls" right="10" bottom="10"
-								down="channelDown_clickHandler()" 
-								up="channelUp_clickHandler()"/>
+	<components:ChannelControls id="channelControls" right="10" top="510" height="161"
+								down="channelDown_clickHandler()" up="channelUp_clickHandler()"/>
+	
+	<components:ThumbsControls id="thumbsControls" 
+							   down="thumbsControls_downHandler()"
+							   up="thumbsControls_upHandler()"
+							   right="10" top="10"/>
 	
 	
-	<components:PlayControls id="playControls" top="270" forward="actionForward_clickHandler()"
-							 horizontalCenter="0" pause="actionPause_clickHandler()"
-							 reverse="actionReverse_clickHandler()" slow="actionSlow_clickHandler()"/>
+	<components:PlayControls id="playControls" top="215" forward="forward_clickHandler()"
+							 horizontalCenter="0" pause="pause_clickHandler()"
+							 reverse="reverse_clickHandler()" slow="slow_clickHandler()"
+							 play="play_clickHandler()" advance="advance_clickHandler()"
+							 replay="replay_clickHandler()"
+							 />
 	
 	
-	<components:NumberPad id="numberPad" left="10" bottom="10" num0="pad0_clickHandler()"
-						  num1="pad1_clickHandler()" num2="pad2_clickHandler()"
-						  num3="pad3_clickHandler()" num4="pad4_clickHandler()"
-						  num5="pad5_clickHandler()" num6="pad6_clickHandler()"
-						  num7="pad7_clickHandler()" num8="pad8_clickHandler()"
-						  num9="pad9_clickHandler()" enter="enter_clickHandler()"
-						  clear="clear_clickHandler()"/>
+	<components:NumberPad id="numberPad" top="470" clear="clear_clickHandler()"
+						  enter="enter_clickHandler()" horizontalCenter="0"
+						  num0="pad0_clickHandler()" num1="pad1_clickHandler()"
+						  num2="pad2_clickHandler()" num3="pad3_clickHandler()"
+						  num4="pad4_clickHandler()" num5="pad5_clickHandler()"
+						  num6="pad6_clickHandler()" num7="pad7_clickHandler()"
+						  num8="pad8_clickHandler()" num9="pad9_clickHandler()"/>
 	
+	<s:Button id="guide" left="10" top="566" width="75" height="60" label="Guide"
+			  click="guide_clickHandler()" fontSize="12"/>
+	<s:Button id="info" left="10" top="631" width="75" height="60" label="Info"
+			  click="info_clickHandler()" fontSize="12"/>
+	
+	<s:Button id="live" left="10" top="501" width="75" height="60" label="Live"
+			  click="live_clickHandler()" fontSize="18"/>
+	<s:Button id="tivo" icon="/assets/controls/tivo_s1.png" left="10" top="10" width="75" height="60" label="Tivo" click="tivo_clickHandler()" fontSize="18"/>
 	
 	
 	

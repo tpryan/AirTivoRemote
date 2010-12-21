@@ -43,6 +43,13 @@
 		<mkdir dir="${build.dir}/android"/>
 		<echo message="Copying SWF for Android"/>
 		<copy file="${swfFile}" todir="${build.dir}/android"  />
+		<echo message="Copying Assets for Android"/>
+		<copy todir="${build.dir}/android/assets" preservelastmodified="true">
+			<fileset dir="${dev.dir}/assets">
+				<exclude name='.gitignore'/>
+				<exclude name='**/.DS_Store'/>
+			</fileset>	
+		</copy>
 		<echo message="Copying Application Description File for Android"/>
 		<copy file="${dev.dir}/${app.name}-app.xml" todir="${build.dir}/android" preservelastmodified="true" />
 		<echo message="Modifying Application Description File"/>
@@ -56,6 +63,13 @@
 		<mkdir dir="${build.dir}/blackberry"/>
 		<echo message="Copying SWF for BlackBerry"/>
 		<copy file="${swfFile}" todir="${build.dir}/blackberry"  />
+		<echo message="Copying Assets for BlackBerry"/>
+		<copy todir="${build.dir}/blackberry/assets" preservelastmodified="true">
+			<fileset dir="${dev.dir}/assets">
+				<exclude name='.gitignore'/>
+				<exclude name='**/.DS_Store'/>
+			</fileset>	
+		</copy>
 		<echo message="Copying Application Description File for BlackBerry"/>
 		<copy file="${dev.dir}/${app.name}-app.xml" todir="${build.dir}/blackberry" preservelastmodified="true" />
 		<echo message="Modifying Application Description File"/>
@@ -80,6 +94,7 @@
 			<arg value="${app.name}"/>
 			<arg value="${app.name}-app.xml"/>
 			<arg value="${app.name}.swf"/>
+			<arg value="assets"/>
 		</exec>
 	</target>
 	
@@ -90,6 +105,7 @@
 			<arg value="${app.name}.bar"/>
 			<arg value="${app.name}-app.xml"/>
 			<arg value="${app.name}.swf"/>
+			<arg value="assets"/>
 		</exec>
 	</target>
 	

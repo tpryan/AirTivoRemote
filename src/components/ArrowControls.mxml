@@ -2,6 +2,7 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" >
 	
+	
 	<fx:Metadata>
 		[Event(name="upClicked", type="flash.events.Event")]
 		[Event(name="downClicked", type="flash.events.Event")]
@@ -42,15 +43,25 @@
 
 	
 	<s:Button visible="false" height="60" width="60"  />
-	<s:Button id="up" width="80" label="↑" click="up_clickHandler(event)" horizontalCenter="0"/>
+	<s:Button id="up" width="75" height="53" label="↑" click="up_clickHandler(event)"
+			  icon="/assets/controls/a_up_s1.png" chromeColor="0x666666"
+			  horizontalCenter="0"/>
 	<s:Button visible="false" height="60" width="60"  />
 	
-	<s:Button id="left" width="80" label="←" click="left_clickHandler(event)" />
-	<s:Button id="select" label="Select" click="select_clickHandler(event)" fontSize="12"/>
-	<s:Button id="right" width="80" label="→" click="right_clickHandler(event)" />
+	<s:Button id="left" width="75" height="53" label="←" 
+			  icon="/assets/controls/a_left_s1.png" chromeColor="0x666666"
+			  click="left_clickHandler(event)"/>
+	<s:Button id="select" width="75" height="53" label="Select"
+			  click="select_clickHandler(event)" chromeColor="0x666666"
+			  fontSize="12"/>
+	<s:Button id="right" width="75" height="53" label="→" 
+			  icon="/assets/controls/a_right_s1.png" chromeColor="0x666666"
+			  click="right_clickHandler(event)"/>
 
 	<s:Button visible="false" height="60" width="60"  />
-	<s:Button id="down" width="80" label="↓" click="down_clickHandler(event)" />
+	<s:Button id="down" width="75" height="53" label="↓" 
+			  icon="/assets/controls/a_down_s1.png" chromeColor="0x666666"
+			  click="down_clickHandler(event)"/>
 	<s:Button visible="false" height="60" width="60"  />
 	
 </s:Group>

@@ -19,8 +19,8 @@
 	<s:TextArea left="10" right="10" top="10" bottom="10" text="{data}"/>
 	
 	<s:actionContent>
-		<s:Button id="remoteButton" label="Remote" click="remoteButton_clickHandler(event)"  />
-		<s:Button id="closeButton" icon="@Embed(source='../assets/close48x48.png')"  click="closeButton_clickHandler()"  />
+		<s:Button id="remoteButton" icon="@Embed(source='../assets/controls/tivo_s1.png')" label="" click="remoteButton_clickHandler(event)"  />
+		<s:Button id="closeButton" icon="@Embed(source='../assets/menu/close48x48.png')"  click="closeButton_clickHandler()"  />
 	</s:actionContent>
 	
 </s:View>

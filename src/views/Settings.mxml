@@ -7,9 +7,9 @@
 			import com.terrenceryan.tivoremote.Tivo;
 			import com.terrenceryan.tivoremote.TivoService;
 			
-			import mx.events.FlexEvent;
+			import spark.events.ViewNavigatorEvent;
 			public var tivoService:TivoService = new TivoService();
-
+			public var returnedObject:Object = null;
 			
 			protected function closeButton_clickHandler():void
 			{
@@ -30,7 +30,7 @@
 			}
 
 
-			protected function init(event:FlexEvent):void
+			protected function init(event:ViewNavigatorEvent):void
 			{
 				if (returnedObject != null) {
 					messages.text = returnedObject.msg;
@@ -38,6 +38,16 @@
 					if (data.hasOwnProperty("msg")){
 						messages.text = data.msg;
 					}
+				}
+				
+				if (tivoService.active == null){
+					instructions.text = "To connect with your device, Tivo Remote needs the " +
+						"IP address of your Tivo. This can be found under the Tivo " +
+						"menu: Messages and Settigns -> Settings -> Phone and Network";
+					
+					note.text = "Note: Connecting will require you activate the network remote feature." +
+						"This can be found under the Tivo menu: Messages and Settigns -> Settings -> " +
+						"Remote, Cable Card & Devices -> Network Remote Control";
 				}
 				
 				
@@ -56,14 +66,24 @@
 	</fx:Script>
 	
 	<s:actionContent>
-		<s:Button id="remoteButton" label="Remote" click="remoteButton_clickHandler(event)"  />
-		<s:Button id="addButton" icon="@Embed(source='../assets/add48x48.png')" right="10" top="10"  click="addButton_clickHandler(event)"/>
-		<s:Button id="closeButton" icon="@Embed(source='../assets/close48x48.png')"   click="closeButton_clickHandler()"  />
+		<s:Button id="remoteButton" icon="@Embed(source='../assets/controls/tivo_s1.png')" label="" click="remoteButton_clickHandler(event)"  />
+		<s:Button id="addButton" icon="@Embed(source='../assets/menu/add48x48.png')" right="10" top="10"  click="addButton_clickHandler(event)"/>
+		<s:Button id="closeButton" icon="@Embed(source='../assets/menu/close48x48.png')"   click="closeButton_clickHandler()"  />
 	</s:actionContent>
 	
-	<s:List id="tivoList" left="10" right="10" top="54" height="50%" labelField="name" click="tivoList_clickHandler(event)"></s:List>
+	
+	<s:List id="tivoList" left="10" right="10" top="54" height="170"
+			click="tivoList_clickHandler(event)" labelField="name"></s:List>
 	<s:Label id="messages" left="10" right="10" top="10" height="32" fontWeight="bold"
 			 text="Your Tivos:" verticalAlign="bottom"/>
+	<s:Group id="text" left="10" right="10" top="234" bottom="10">
+		<s:layout>
+			<s:VerticalLayout  gap="50"/>
+		</s:layout>
+		<s:Label id="instructions"  text="" width="{tivoList.width -20}"  />
+		<s:Label id="note"  text=""  width="{tivoList.width -20}" color="0xF3E88E" />
+	</s:Group>
+	
 	
 	
 	

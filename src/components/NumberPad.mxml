@@ -75,18 +75,18 @@
 		<s:TileLayout requestedColumnCount="3" verticalGap="3" horizontalGap="3"  />
 	</s:layout>
 		
-	<s:Button id="pad1" height="60" width="60" label="1" click="pad1_clickHandler(event)"/>
-	<s:Button id="pad2" height="60" width="60"  label="2" click="pad2_clickHandler(event)"/>
-	<s:Button id="pad3" height="60" width="60"  label="3" click="pad3_clickHandler(event)"/>
-	<s:Button id="pad4" height="60" width="60" label="4" click="pad4_clickHandler(event)"/>
-	<s:Button id="pad5" height="60" width="60" label="5" click="pad5_clickHandler(event)"/>
-	<s:Button id="pad6" height="60" width="60" label="6" click="pad6_clickHandler(event)"/>
-	<s:Button id="pad7" height="60" width="60" label="7" click="pad7_clickHandler(event)"/>
-	<s:Button id="pad8" height="60" width="60" label="8" click="pad8_clickHandler(event)"/>
-	<s:Button id="pad9" height="60" width="60" label="9" click="pad9_clickHandler(event)"/>
-	<s:Button id="clear" height="60" width="60" label="C" click="clear_clickHandler(event)"/>
-	<s:Button id="pad0" height="60" width="60" label="0" click="pad0_clickHandler(event)"/>
-	<s:Button id="enter" height="60" width="60" label="E" click="enter_clickHandler(event)"/>		  
+	<s:Button id="pad1" height="53" width="53" label="1" click="pad1_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad2" height="53" width="53"  label="2" click="pad2_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad3" height="53" width="53"  label="3" click="pad3_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad4" height="53" width="53" label="4" click="pad4_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad5" height="53" width="53" label="5" click="pad5_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad6" height="53" width="53" label="6" click="pad6_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad7" height="53" width="53" label="7" click="pad7_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad8" height="53" width="53" label="8" click="pad8_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad9" height="53" width="53" label="9" click="pad9_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="clear" height="53" width="53" label="C" click="clear_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="pad0" height="53" width="53" label="0" click="pad0_clickHandler(event)" chromeColor="0x333333"/>
+	<s:Button id="enter" height="53" width="53" label="E" click="enter_clickHandler(event)" chromeColor="0x333333"/>		  
 
 	
 	

@@ -1,49 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark">
+		 xmlns:s="library://ns.adobe.com/flex/spark" width="235" height="235">
 	
 	<fx:Metadata>
 		[Event(name="pause", type="flash.events.Event")]
+		[Event(name="play", type="flash.events.Event")]
+		[Event(name="advance", type="flash.events.Event")]
 		[Event(name="forward", type="flash.events.Event")]
 		[Event(name="reverse", type="flash.events.Event")]
 		[Event(name="slow", type="flash.events.Event")]
-		[Event(name="backup", type="flash.events.Event")]
+		[Event(name="replay", type="flash.events.Event")]
 	</fx:Metadata>
 	
 	<fx:Script>
 		<![CDATA[
-			protected function actionPause_clickHandler(event:MouseEvent):void{
+			protected function pause_clickHandler(event:MouseEvent):void{
 				dispatchEvent(new Event("pause"));
 			}
 			
-			protected function actionForward_clickHandler(event:MouseEvent):void{
+			protected function forward_clickHandler(event:MouseEvent):void{
 				dispatchEvent(new Event("forward"));
 			}
 			
-			protected function actionReverse_clickHandler(event:MouseEvent):void{
+			protected function reverse_clickHandler(event:MouseEvent):void{
 				dispatchEvent(new Event("reverse"));
 			}
 			
-			protected function actionSlow_clickHandler(event:MouseEvent):void{
+			protected function slow_clickHandler(event:MouseEvent):void{
 				dispatchEvent(new Event("slow"));
 			}
 
-			protected function actionBackup_clickHandler(event:MouseEvent):void{
-				dispatchEvent(new Event("backup"));
+			protected function replay_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("replay"));
+			}
+			
+			protected function play_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("play"));
+			}
+			
+			protected function advance_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("advance"));
+			}
+
+
+			protected function record_clickHandler(event:MouseEvent):void{
+				dispatchEvent(new Event("replay"));
 			}
 
 		]]>
 	</fx:Script>
 	
-	<s:layout>
-		<s:HorizontalLayout gap="3" />
-	</s:layout>
 	
-	<s:Button id="actionReverse" width="75" label="&lt;&lt;" click="actionReverse_clickHandler(event)"/>
-	<s:Button id="actionBackup"  width="75" label="&lt;|" click="actionBackup_clickHandler(event)"/>
-	<s:Button id="actionPause" width="75" label="||" click="actionPause_clickHandler(event)" />
-	<s:Button id="actionSlow" width="75" label="|&gt;" click="actionSlow_clickHandler(event)" />
-	<s:Button id="actionForward" width="75" label="&gt;&gt;" click="actionForward_clickHandler(event)" />
+	<s:Button id="reverse" left="0" top="58" width="75" height="53" label="&lt;&lt;"
+			  icon="/assets/controls/reverse_s1.png" chromeColor="0x666666"
+			  click="reverse_clickHandler(event)" fontSize="20"/>
+	<s:Button id="replay" left="0" bottom="0" width="75" height="53" label="&lt;|"
+			  icon="/assets/controls/backup_s1.png" chromeColor="0x666666"
+			  click="replay_clickHandler(event)" fontSize="20"/>
+	<s:Button id="record" bottom="0" width="75" height="53" label="O"
+			  icon="/assets/controls/record_s1.png" chromeColor="0x666666"
+			  click="record_clickHandler(event)" fontSize="20" horizontalCenter="0"/>
+	<s:Button id="pause" top="58" width="75" height="53" label="||" click="pause_clickHandler(event)"
+			  icon="/assets/controls/pause_s1.png"  chromeColor="0xffb900"
+			  fontSize="20" horizontalCenter="0"/>
+	<s:Button id="slow" top="116" width="75" height="53" label="|&gt;"
+			  icon="/assets/controls/slow_s1.png" chromeColor="0x666666"
+			  click="slow_clickHandler(event)" fontSize="20" horizontalCenter="0"/>
+	<s:Button id="forward" right="0" top="58" width="75" height="53" label="&gt;&gt;"
+			  icon="/assets/controls/forward_s1.png" chromeColor="0x666666"
+			  click="forward_clickHandler(event)" fontSize="20"/>
+	<s:Button id="play" top="0" width="75" height="53" label="&gt;" click="play_clickHandler(event)"
+			  icon="/assets/controls/play_s1.png" chromeColor="0x666666"
+			  fontSize="20" horizontalCenter="0"/>
+	<s:Button id="advance" right="0" bottom="0" width="75" height="53" label="&gt;|"
+			  icon="/assets/controls/advance_s1.png" chromeColor="0x666666"
+			  click="advance_clickHandler(event)" fontSize="20"/>
 	
 	
 	

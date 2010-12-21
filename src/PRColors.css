@@ -1,0 +1,65 @@
+/* Sets colors that more closely match the "dark" theme of the preview
+release of Flash Builder "Burrito". */
+
+@namespace "library://ns.adobe.com/flex/spark";
+
+ActionBar #titleDisplay
+{
+	color: #FFFFFF;
+	textShadowColor: #000000;
+}
+
+ViewNavigatorApplication
+{
+	backgroundColor: #484848;
+}
+
+.iconItemRendererMessageStyle
+{
+	font-weight: normal;
+	color: #DDDDDD;
+}
+
+TabbedViewNavigatorApplication
+{
+	backgroundColor: #464646;
+	skinClass: ClassReference("spark.skins.mobile.TabbedViewNavigatorApplicationSkin");
+}
+
+ViewMenuItem
+{
+	color: #000000;
+	textShadowColor: #FFFFFF;
+}
+
+List {
+	contentBackgroundColor: #3F3F3F;
+}
+
+global
+{
+	/* Looks */
+	chromeColor: #464646;
+	contentBackgroundColor: #3F3F3F;
+	rollOverColor: #CEDBEF;
+	focusColor: #56A6FF;
+	selectionColor: #B2B2B2;
+	color: #FFFFFF;
+	textShadowColor: #000000;
+}
+
+Button
+{
+	/* Looks */
+	chromeColor: #464646;
+	contentBackgroundColor: #3F3F3F;
+	rollOverColor: #CEDBEF;
+	focusColor: #56A6FF;
+	selectionColor: #B2B2B2;
+	color: #FFFFFF;
+	textShadowColor: #000000;
+}
+
+View{
+	backgroundColor: #3F3F3F;
+}
