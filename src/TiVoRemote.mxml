@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" authorDensity="240ppi" 
 					 xmlns:s="library://ns.adobe.com/flex/spark" firstView="views.Remote" 
-					 splashScreenImage="@Embed('assets/splashscreen.png')" splashScreenScaleMode="zoom" creationComplete="viewnavigatorapplication1_creationCompleteHandler(event)">
+					 splashScreenImage="@Embed('assets/splashscreen.png')" splashScreenScaleMode="zoom" 
+					 creationComplete="init(event)">
 	
 	<fx:Style source="PRColors.css" />
 	
@@ -9,20 +10,17 @@
 		<![CDATA[
 			import mx.events.FlexEvent;
 			
-			protected function closeButton_clickHandler():void
-			{
+			protected function closeButton_clickHandler():void{
 				NativeApplication.nativeApplication.exit();
 			}
 			
 			
-			protected function onDeactivateApp(event:Event):void
-			{
+			protected function onDeactivateApp(event:Event):void{
 				NativeApplication.nativeApplication.exit();
 			}
 				
 
-			protected function viewnavigatorapplication1_creationCompleteHandler(event:FlexEvent):void
-			{
+			protected function init(event:FlexEvent):void{
 				NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE, onDeactivateApp);
 			}
 

@@ -22,7 +22,7 @@
 		<delete dir="${build.dir}"/>
 	</target>
 	
-	<target name="prepPackage" depends="compile,handleDevices" />
+	<target name="prepPackage" depends="compile,setBuildNumber,handleDevices" />
 	
 	<target name="compile" depends="clean"> 
 		<echo message="Compiling swf"/>
@@ -36,6 +36,12 @@
             </compiler.library-path>
 		</mxmlc>
     </target>
+	
+	<target name="setBuildNumber">
+		<echo message="Getting Build Number"/>
+		<buildnumber/>
+		<echo message="Build Number: ${build.number}"/>
+	</target>
 	
 	
 	<target name="collect.android">
@@ -55,6 +61,8 @@
 		<echo message="Modifying Application Description File"/>
 		<replace file="${build.dir}/android/${app.name}-app.xml">
 			<replacefilter token="${contentText}" value="${app.name}.swf" />
+			<replacefilter token="1.0.000" value="1.0.${build.number}" />
+			
 		</replace>
 	</target>
 	
@@ -75,6 +83,7 @@
 		<echo message="Modifying Application Description File"/>
 		<replace file="${build.dir}/blackberry/${app.name}-app.xml">
 			<replacefilter token="${contentText}" value="${app.name}.swf" />
+			<replacefilter token="1.0.000" value="1.0.${build.number}" />
 		</replace>
 	</target>
 	

@@ -20,6 +20,10 @@
 				tivoRemote.play();
 			}
 			
+			protected function record_clickHandler():void{
+				tivoRemote.record();
+			}
+			
 			protected function advance_clickHandler():void{
 				tivoRemote.advance();
 			}
@@ -202,7 +206,7 @@
 							 horizontalCenter="0" pause="pause_clickHandler()"
 							 reverse="reverse_clickHandler()" slow="slow_clickHandler()"
 							 play="play_clickHandler()" advance="advance_clickHandler()"
-							 replay="replay_clickHandler()"
+							 replay="replay_clickHandler()" record="replay_clickHandler()"
 							 />
 	
 	

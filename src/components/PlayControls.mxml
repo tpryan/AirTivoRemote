@@ -10,6 +10,7 @@
 		[Event(name="reverse", type="flash.events.Event")]
 		[Event(name="slow", type="flash.events.Event")]
 		[Event(name="replay", type="flash.events.Event")]
+		[Event(name="record", type="flash.events.Event")]
 	</fx:Metadata>
 	
 	<fx:Script>
@@ -44,7 +45,7 @@
 
 
 			protected function record_clickHandler(event:MouseEvent):void{
-				dispatchEvent(new Event("replay"));
+				dispatchEvent(new Event("record"));
 			}
 
 		]]>
